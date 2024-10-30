@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>presentation</title>
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+     <h1>SIMPLE QUIZ</h1>
+     <header>
+     <p><b>Quiz Instructions :</b><br>
+        <b>Before starting, read all questions thoroughly.</b><br>
+        <b>You have 10 minutes to complete the quiz.</b><br>
+        <b>Consists of 10 questions and all questions are compulsory.</b><br>
+     </p>
+    </header>
+     <form id="quizform">
+        NAME: <input type="text" name="fname" required><br>
+        EMAIL-ID: <input type="email" name="mail" required><br>
+        <fieldset><p>1. What is the correct HTML element for inserting a line break?</p>
+            A.<input type="radio" name="a1" value="A">break<br>
+            B.<input type="radio" name="a1" value="B">lb<br>
+            C.<input type="radio" name="a1" value="C">br<br>
+            D.<input type="radio" name="a1" value="D">newline<br>
+    </fieldset>
+    <fieldset>
+        <p>2. Which of the following elements is used to create a numbered list in HTML?</p>
+        A.<input type="radio" name="a2" value="A">ul<br>
+        B.<input type="radio" name="a2" value="B">ol<br>
+        C.<input type="radio" name="a2" value="C">li<br>
+        D.<input type="radio" name="a2" value="D">dl<br>
+    </fieldset>
+    <fieldset>
+        <p>3.the img tag is used for creating images and requires a closing tag
+        </p>
+        A.<input type="radio" name="a3" value="true">true<br>
+        B.<input type="radio" name="a3" value="false">false<br>
+    </fieldset>
+    <fieldset>
+        <p>4.Assertion: The use of inline styles in HTML is recommended for maintaining consistent design across web pages. <br>
+            Reason: Inline styles allow you to apply unique styles directly to specific elements. <br>
+            
+            </p>
+        A.<input type="radio" name="a4" value="A">Both assertion and reason are true, and the reason correctly explains the assertion.<br>
+        B.<input type="radio" name="a4" value="B">Both assertion and reason are true, but the reason does not explain the assertion.<br>
+        C.<input type="radio" name="a4" value="C">The assertion is true, but the reason is <br>
+        D.<input type="radio" name="a4" value="D">The assertion is false, but the reason is true.<br>
+    </fieldset>
+    <fieldset>
+        <p>5.HTML tags are case sensitive</p>
+        A.<input type="radio" name="a5" value="true">true<br>
+        B.<input type="radio" name="a5" value="false">false<br>
+    </fieldset>
+    <fieldset>
+        <p>6.What is the default display property for the div element in HTML?</p>
+        A.<input type="radio" name="a6" value="A">inline<br>
+        B.<input type="radio" name="a6" value="B">inline-block<br>
+        C.<input type="radio" name="a6" value="C">block<br>
+        D.<input type="radio" name="a6" value="D">flex<br>
+    </fieldset>
+    <fieldset>
+        <p>7.What is the purpose of the figure element in HTML?
+        </p>
+        A.<input type="radio" name="a7" value="A">To add captions to tables<br>
+        B.<input type="radio" name="a7" value="B">To contain images, diagrams, or other illustrations along with a caption<br>
+        C.<input type="radio" name="a7" value="C">To style images in bold<br>
+        D.<input type="radio" name="a7" value="D">To organize figures into a grid<br>
+    </fieldset>
+    <fieldset>
+        <p>8.Assertion: The title tag is used to define the main heading of an HTML <br>
+            Reason: The content of the title tag is displayed on the browser's title bar and is important for SEO. <br>
+        </p>
+        A.<input type="radio" name="a8" value="A">Both assertion and reason are true, and the reason correctly explains the assertion<br>
+        B.<input type="radio" name="a8" value="B">Both assertion and reason are true, but the reason does not explain the assertion.<br>
+        C.<input type="radio" name="a8" value="C">The assertion is true, but the reason is false.<br>
+        D.<input type="radio" name="a8" value="D">The assertion is false, but the reason is true.
+
+        <br>
+    </fieldset>
+    <fieldset>
+        <p>9.What does the target="_blank" attribute do in an anchor (<a>) tag?
+        </p>
+        A.<input type="radio" name="a9" value="A">Opens the link in the same window<br>
+        B.<input type="radio" name="a9" value="B">Opens the link in a new tab or window<br>
+        C.<input type="radio" name="a9" value="C">Opens the link in a frame<br>
+        D.<input type="radio" name="a9" value="D">Opens the link in a popup<br>
+    </fieldset>
+    <fieldset>
+        <p>10.What does the alt attribute do for an img element?
+        </p>
+        A.<input type="radio" name="a10" value="A">Adds a caption below the image<br>
+        B.<input type="radio" name="a10" value="B">Provides a tooltip when the user hovers over the image<br>
+        C.<input type="radio" name="a10" value="C">Specifies alternative text to be displayed if the image fails to load<br>
+        D.<input type="radio" name="a10" value="D">Defines the size of the image in case of slow loading<br>
+    </fieldset>
+
+    <button type="button" onclick="calculateScore()">Submit</button>
+     </form>
+     <p id="result"></p>
+
+
+
+     <script>
+        function calculateScore(){
+            //define the correct answer
+            const correctanswers={
+            a1: "C",
+            a2: "B",
+            a3: "false",
+            a4: "D",
+            a5: "false",
+            a6: "C",
+            a7: "B",
+            a8: "C",
+            a9: "B",
+            a10: "C"
+        };
+        score=0;
+        const form=document.forms['quizform'];
+        for(let question in correctanswers){
+            const useranswer=form[question].value;
+            if (useranswer ===correctanswers[question]){
+                score++;
+            }
+        }
+        //display the result
+        document.getElementById('result').innerText = `Your score is: ${score} / ${Object.keys(correctanswers).length}`;
+
+    }
+
+     </script>
+</body>
+</html>
